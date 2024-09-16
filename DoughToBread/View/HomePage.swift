@@ -1,14 +1,11 @@
-//
-//  HomePage.swift
-//  DoughToBread
-//
-//  Created by Alex Rowshan on 9/16/24.
-//
-
 import SwiftUI
 import FirebaseAuth
+import Foundation
+import Firebase
 
 struct Homepage: View {
+    @State private var errorMessage: String?
+    
     var body: some View {
         VStack {
             Text("Welcome to Dough To Bread")
@@ -23,6 +20,30 @@ struct Homepage: View {
             } else {
                 Text("Hello Guest")
                     .font(.headline)
+            }
+            
+            Button {
+                Task {
+                    do {
+                        try await Authentication().logout()
+                    } catch {
+                        errorMessage = error.localizedDescription
+                    }
+                }
+            } label: {
+                Text("Log Out")
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(Color.green)
+                    .cornerRadius(8)
+            }
+            .buttonStyle(.plain)
+            
+            if let errorMessage = errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .padding()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
