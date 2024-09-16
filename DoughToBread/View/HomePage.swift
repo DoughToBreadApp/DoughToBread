@@ -16,8 +16,14 @@ struct Homepage: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .padding()
-            Text("Hello " + (Auth.auth().currentUser!.displayName ?? "Username not found"))
-                .font(.headline)
+            
+            if let user = Auth.auth().currentUser {
+                Text("Hello " + (user.displayName ?? "Username not found"))
+                    .font(.headline)
+            } else {
+                Text("Hello Guest")
+                    .font(.headline)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
