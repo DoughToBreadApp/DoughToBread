@@ -1,5 +1,3 @@
-# This workflow will build and test an Xcode project
-
 name: Swift
 
 on:
@@ -14,12 +12,31 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
+    - name: Cache SPM dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/Library/Developer/Xcode/DerivedData
+          ~/.swiftpm
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
+          
     - name: Set up Xcode
       run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+
     - name: Install dependencies
       run: xcodebuild -resolvePackageDependencies
-    - name: Build
-      run: xcodebuild build -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' CODE_SIGNING_ALLOWED=NO
-    - name: Run tests
-      run: xcodebuild test -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' CODE_SIGNING_ALLOWED=NO
 
+    - name: Cache Xcode Derived Data
+      uses: actions/cache@v3
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData
+        key: ${{ runner.os }}-xcode-${{ github.sha }}
+
+    - name: Build
+      run: xcodebuild build -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM=""
+
+    - name: Run tests
+      run: xcodebuild test -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM=""
