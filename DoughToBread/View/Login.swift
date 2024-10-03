@@ -18,21 +18,16 @@ struct Login: View {
             
             VStack(spacing: 50) {
                 Spacer()
-
-                Image("logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .padding(.top, 40)
                 
                 VStack(spacing: 8) {
                     Text("Welcome to")
                         .font(.system(size: 24, weight: .medium, design: .default))
                         .foregroundColor(.secondary)
-
-                    Text("Dough To Bread")
-                        .font(.system(size: 34, weight: .bold, design: .default))
-                        .foregroundColor(.primary)
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .padding(.top, 40)
                 }
                 
                 Spacer()

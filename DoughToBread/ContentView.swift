@@ -20,10 +20,10 @@ struct ContentView: View {
             } else {
                 Login()
             }
-        }.onAppear{
-            //Firebase state change listeneer
-            Auth.auth().addStateDidChangeListener{ auth, user in
-                if (user != nil) {
+        }
+        .onAppear {
+            _ = Auth.auth().addStateDidChangeListener { auth, user in
+                if user != nil {
                     userLoggedIn = true
                 } else {
                     userLoggedIn = false

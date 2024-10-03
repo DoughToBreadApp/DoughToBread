@@ -1,10 +1,15 @@
 import SwiftUI
-import FirebaseAuth
-import Foundation
 import Firebase
+import FirebaseAuth
+
+
+import SwiftUI
+import FirebaseAuth
 
 struct Homepage: View {
     @State private var errorMessage: String?
+    @State private var showQuestionnaire = true
+    @State private var shouldNavigate = false
     
     var body: some View {
         VStack {
@@ -14,31 +19,14 @@ struct Homepage: View {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            if let user = Auth.auth().currentUser {
-                Text("Hello " + (user.displayName ?? "Username not found"))
-                    .font(.headline)
-            } else {
-                Text("Hello Guest")
-                    .font(.headline)
-            }
-            
-            Button {
-                Task {
-                    do {
-                        try await Authentication().logout()
-                    } catch {
-                        errorMessage = error.localizedDescription
+            if showQuestionnaire {
+                QuestionnaireView(shouldNavigate: $shouldNavigate)
+                    .onChange(of: shouldNavigate) { newValue in
+                        showQuestionnaire = !newValue
                     }
-                }
-            } label: {
-                Text("Log Out")
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    .background(Color.green)
-                    .cornerRadius(8)
+            } else if shouldNavigate {
+                MainAppView(shouldNavigate: shouldNavigate)
             }
-            .buttonStyle(.plain)
             
             if let errorMessage = errorMessage {
                 Text(errorMessage)
@@ -48,11 +36,5 @@ struct Homepage: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
-    }
-}
-
-struct Homepage_Previews: PreviewProvider {
-    static var previews: some View {
-        Homepage()
     }
 }
