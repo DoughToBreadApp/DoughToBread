@@ -9,25 +9,78 @@ import SwiftUI
 import FirebaseAuth
 
 struct Login: View {
-    @State private var err : String = ""
+    @State private var err: String = ""
     
     var body: some View {
-        Text("Login")
-        Button{
-            Task {
-                do {
-                    try await Authentication().googleOauth()
-                } catch AuthenticationError.runtimeError(let errorMessage) {
-                    err = errorMessage
+        ZStack {
+            Color(.systemBackground)
+                .ignoresSafeArea()
+            
+            VStack(spacing: 50) {
+                Spacer()
+
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .padding(.top, 40)
+                
+                VStack(spacing: 8) {
+                    Text("Welcome to")
+                        .font(.system(size: 24, weight: .medium, design: .default))
+                        .foregroundColor(.secondary)
+
+                    Text("Dough To Bread")
+                        .font(.system(size: 34, weight: .bold, design: .default))
+                        .foregroundColor(.primary)
                 }
+                
+                Spacer()
+
+                Button(action: {
+                    Task {
+                        do {
+                            try await Authentication().googleOauth()
+                        } catch AuthenticationError.runtimeError(let errorMessage) {
+                            err = errorMessage
+                        }
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: "globe")
+                            .foregroundColor(.white)
+                        Text("Sign in with Google")
+                            .font(.system(size: 18, weight: .medium))
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 320, height: 50)
+                    .background(Color.green)
+                    .cornerRadius(25)
+                }
+                .padding(.horizontal)
+                
+                if !err.isEmpty {
+                    Text(err)
+                        .foregroundColor(.red)
+                        .font(.system(size: 14, weight: .regular))
+                        .padding(.top, 10)
+                }
+
+                Spacer()
+
+                Text("By signing in, you agree to our terms and conditions.")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 30)
             }
-        }label: {
-            HStack {
-                Image(systemName: "person.badge.key.fill")
-                Text("Sign in with Google")
-            }.padding(8)
-        }.buttonStyle(.borderedProminent)
-        
-        Text(err).foregroundColor(.red).font(.caption)
+        }
+    }
+}
+
+struct Login_Previews: PreviewProvider {
+    static var previews: some View {
+        Login()
     }
 }
