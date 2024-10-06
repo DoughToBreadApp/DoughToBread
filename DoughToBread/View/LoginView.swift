@@ -4,13 +4,11 @@
 //
 //  Created by Alex Rowshan on 9/16/24.
 //
-
 import SwiftUI
-import FirebaseAuth
 
 struct Login: View {
-    @State private var err: String = ""
-    
+    @StateObject private var viewModel = LoginViewModel()
+
     var body: some View {
         ZStack {
             Color(.systemBackground)
@@ -29,16 +27,40 @@ struct Login: View {
                         .frame(width: 100, height: 100)
                         .padding(.top, 40)
                 }
-                
-                Spacer()
+
+                VStack(spacing: 16) {
+                    TextField("Email", text: $viewModel.email)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(5)
+
+                    SecureField("Password", text: $viewModel.password)
+                        .padding()
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(5)
+                }
+                .padding(.horizontal, 16)
 
                 Button(action: {
                     Task {
-                        do {
-                            try await Authentication().googleOauth()
-                        } catch AuthenticationError.runtimeError(let errorMessage) {
-                            err = errorMessage
-                        }
+                        await viewModel.emailLogin()
+                    }
+                }) {
+                    HStack {
+                        Text("Login with Email")
+                            .font(.system(size: 18, weight: .medium))
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 320, height: 50)
+                    .background(Color.blue)
+                    .cornerRadius(25)
+                }
+
+                Button(action: {
+                    Task {
+                        await viewModel.googleLogin()
                     }
                 }) {
                     HStack {
@@ -54,10 +76,19 @@ struct Login: View {
                 }
                 .padding(.horizontal)
                 
-                if !err.isEmpty {
-                    Text(err)
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
                         .foregroundColor(.red)
                         .font(.system(size: 14, weight: .regular))
+                        .padding(.top, 10)
+                }
+
+                Button(action: {
+                    viewModel.sendPasswordReset()
+                }) {
+                    Text("Forgot Password?")
+                        .font(.footnote)
+                        .foregroundColor(.blue)
                         .padding(.top, 10)
                 }
 
