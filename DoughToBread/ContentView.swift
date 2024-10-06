@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if userLoggedIn {
-                Homepage()
+                PollView()
             } else {
                 Login()
             }

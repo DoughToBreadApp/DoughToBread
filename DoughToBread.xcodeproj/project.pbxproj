@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E45928F2CAF37390005145E /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E45928E2CAF37330005145E /* Questionnaire.swift */; };
 		0E4592912CAF375B0005145E /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4592902CAF37570005145E /* MainAppView.swift */; };
 		0E4592952CAF43280005145E /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4592942CAF43200005145E /* UserProfileView.swift */; };
 		D10F12FD2C950532009B3C67 /* DoughToBreadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F12FC2C950532009B3C67 /* DoughToBreadApp.swift */; };
@@ -21,12 +20,14 @@
 		D127A9DB2C98337A00C402C0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D127A9DA2C98337A00C402C0 /* FirebaseFirestore */; };
 		D127A9DE2C98338600C402C0 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D127A9DD2C98338600C402C0 /* GoogleSignIn */; };
 		D127A9E02C98338600C402C0 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D127A9DF2C98338600C402C0 /* GoogleSignInSwift */; };
-		D127A9E32C9833B100C402C0 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127A9E22C9833B100C402C0 /* HomePage.swift */; };
 		D127A9E52C9834FE00C402C0 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127A9E42C9834FE00C402C0 /* Login.swift */; };
 		D127A9E72C98351800C402C0 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127A9E62C98351800C402C0 /* Authentication.swift */; };
 		D127A9E92C9836BD00C402C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D127A9E82C9836BD00C402C0 /* GoogleService-Info.plist */; };
 		D127AA082C983E3000C402C0 /* ExampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127AA072C983E2F00C402C0 /* ExampleModel.swift */; };
 		D127AA0A2C983E3C00C402C0 /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127AA092C983E3C00C402C0 /* ExampleViewModel.swift */; };
+		D169F3262CB1FA5A0043D63E /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F3252CB1FA5A0043D63E /* Question.swift */; };
+		D169F3282CB1FACC0043D63E /* PollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F3272CB1FACC0043D63E /* PollViewModel.swift */; };
+		D169F32A2CB1FAE00043D63E /* PollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F3292CB1FAE00043D63E /* PollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E45928E2CAF37330005145E /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		0E4592902CAF37570005145E /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		0E4592942CAF43200005145E /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		D10F12F92C950532009B3C67 /* DoughToBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoughToBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,12 +61,14 @@
 		D10F13172C950535009B3C67 /* DoughToBreadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughToBreadUITests.swift; sourceTree = "<group>"; };
 		D10F13192C950535009B3C67 /* DoughToBreadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughToBreadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D127A9E12C98339A00C402C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		D127A9E22C9833B100C402C0 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		D127A9E42C9834FE00C402C0 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D127A9E62C98351800C402C0 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		D127A9E82C9836BD00C402C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D127AA072C983E2F00C402C0 /* ExampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleModel.swift; sourceTree = "<group>"; };
 		D127AA092C983E3C00C402C0 /* ExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewModel.swift; sourceTree = "<group>"; };
+		D169F3252CB1FA5A0043D63E /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		D169F3272CB1FACC0043D63E /* PollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollViewModel.swift; sourceTree = "<group>"; };
+		D169F3292CB1FAE00043D63E /* PollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,10 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				0E4592942CAF43200005145E /* UserProfileView.swift */,
-				0E45928E2CAF37330005145E /* Questionnaire.swift */,
-				D127A9E22C9833B100C402C0 /* HomePage.swift */,
 				D127A9E42C9834FE00C402C0 /* Login.swift */,
 				0E4592902CAF37570005145E /* MainAppView.swift */,
+				D169F3292CB1FAE00043D63E /* PollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				D127AA092C983E3C00C402C0 /* ExampleViewModel.swift */,
+				D169F3272CB1FACC0043D63E /* PollViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				D127AA072C983E2F00C402C0 /* ExampleModel.swift */,
+				D169F3252CB1FA5A0043D63E /* Question.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,14 +333,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D10F12FF2C950532009B3C67 /* ContentView.swift in Sources */,
-				D127A9E32C9833B100C402C0 /* HomePage.swift in Sources */,
 				D127AA082C983E3000C402C0 /* ExampleModel.swift in Sources */,
 				D10F12FD2C950532009B3C67 /* DoughToBreadApp.swift in Sources */,
 				0E4592912CAF375B0005145E /* MainAppView.swift in Sources */,
+				D169F3282CB1FACC0043D63E /* PollViewModel.swift in Sources */,
+				D169F32A2CB1FAE00043D63E /* PollView.swift in Sources */,
 				0E4592952CAF43280005145E /* UserProfileView.swift in Sources */,
 				D127A9E72C98351800C402C0 /* Authentication.swift in Sources */,
-				0E45928F2CAF37390005145E /* Questionnaire.swift in Sources */,
 				D127AA0A2C983E3C00C402C0 /* ExampleViewModel.swift in Sources */,
+				D169F3262CB1FA5A0043D63E /* Question.swift in Sources */,
 				D127A9E52C9834FE00C402C0 /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
