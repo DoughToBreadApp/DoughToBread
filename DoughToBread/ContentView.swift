@@ -1,14 +1,6 @@
-//
-//  ContentView.swift
-//  DoughToBread
-//
-//  Created by Alex Rowshan on 9/13/24.
-//
-
 import SwiftUI
 import Firebase
 import FirebaseAuth
-
 
 struct ContentView: View {
     @State private var userLoggedIn = (Auth.auth().currentUser != nil)
@@ -18,7 +10,9 @@ struct ContentView: View {
             if userLoggedIn {
                 PollView()
             } else {
-                Login()
+                NavigationView {
+                    LoginView()
+                }
             }
         }
         .onAppear {
