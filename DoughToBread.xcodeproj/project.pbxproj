@@ -27,6 +27,9 @@
 		D127A9E92C9836BD00C402C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D127A9E82C9836BD00C402C0 /* GoogleService-Info.plist */; };
 		D127AA082C983E3000C402C0 /* ExampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127AA072C983E2F00C402C0 /* ExampleModel.swift */; };
 		D127AA0A2C983E3C00C402C0 /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127AA092C983E3C00C402C0 /* ExampleViewModel.swift */; };
+		D15D68EC2CC4791200E57708 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D68EB2CC4791200E57708 /* QuizQuestion.swift */; };
+		D15D68F02CC4794100E57708 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D68EF2CC4794100E57708 /* QuizViewModel.swift */; };
+		D15D68F22CC4796900E57708 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D68F12CC4796900E57708 /* QuizView.swift */; };
 		D169F3262CB1FA5A0043D63E /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F3252CB1FA5A0043D63E /* Question.swift */; };
 		D169F3282CB1FACC0043D63E /* PollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F3272CB1FACC0043D63E /* PollViewModel.swift */; };
 		D169F32A2CB1FAE00043D63E /* PollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F3292CB1FAE00043D63E /* PollView.swift */; };
@@ -70,6 +73,9 @@
 		D127A9E82C9836BD00C402C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D127AA072C983E2F00C402C0 /* ExampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleModel.swift; sourceTree = "<group>"; };
 		D127AA092C983E3C00C402C0 /* ExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewModel.swift; sourceTree = "<group>"; };
+		D15D68EB2CC4791200E57708 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
+		D15D68EF2CC4794100E57708 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		D15D68F12CC4796900E57708 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		D169F3252CB1FA5A0043D63E /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D169F3272CB1FACC0043D63E /* PollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollViewModel.swift; sourceTree = "<group>"; };
 		D169F3292CB1FAE00043D63E /* PollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollView.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 				D169F3292CB1FAE00043D63E /* PollView.swift */,
 				4160BBBA2CB3780500DEA07F /* LoginView.swift */,
 				4160BBBE2CB37AD700DEA07F /* SignupView.swift */,
+				D15D68F12CC4796900E57708 /* QuizView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +191,7 @@
 				D127AA092C983E3C00C402C0 /* ExampleViewModel.swift */,
 				D169F3272CB1FACC0043D63E /* PollViewModel.swift */,
 				4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */,
+				D15D68EF2CC4794100E57708 /* QuizViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 			children = (
 				D127AA072C983E2F00C402C0 /* ExampleModel.swift */,
 				D169F3252CB1FA5A0043D63E /* Question.swift */,
+				D15D68EB2CC4791200E57708 /* QuizQuestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -340,6 +349,8 @@
 			files = (
 				D10F12FF2C950532009B3C67 /* ContentView.swift in Sources */,
 				D127AA082C983E3000C402C0 /* ExampleModel.swift in Sources */,
+				D15D68EC2CC4791200E57708 /* QuizQuestion.swift in Sources */,
+				D15D68F02CC4794100E57708 /* QuizViewModel.swift in Sources */,
 				D10F12FD2C950532009B3C67 /* DoughToBreadApp.swift in Sources */,
 				0E4592912CAF375B0005145E /* MainAppView.swift in Sources */,
 				D169F3282CB1FACC0043D63E /* PollViewModel.swift in Sources */,
@@ -349,6 +360,7 @@
 				0E4592952CAF43280005145E /* UserProfileView.swift in Sources */,
 				D127A9E72C98351800C402C0 /* Authentication.swift in Sources */,
 				D127AA0A2C983E3C00C402C0 /* ExampleViewModel.swift in Sources */,
+				D15D68F22CC4796900E57708 /* QuizView.swift in Sources */,
 				4160BBBF2CB37AD700DEA07F /* SignupView.swift in Sources */,
 				D169F3262CB1FA5A0043D63E /* Question.swift in Sources */,
 			);
