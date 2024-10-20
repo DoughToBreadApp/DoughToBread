@@ -34,9 +34,9 @@ jobs:
       with:
         path: ~/Library/Developer/Xcode/DerivedData
         key: ${{ runner.os }}-xcode-${{ github.sha }}
-
+    
     - name: Build
-      run: xcodebuild build -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM=""
+      run: xcodebuild build -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM="" -skip-testing:"DoughToBreadUITests"
 
     - name: Run unit tests
       run: xcodebuild test -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM="" -skip-testing:"DoughToBreadUITests"
