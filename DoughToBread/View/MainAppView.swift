@@ -65,41 +65,57 @@ struct ModuleDetailView: View {
     var moduleId: String
     @State private var moduleData: [String: Any] = [:]
     @State private var sections: [Section] = []
+    @State private var showQuiz = false
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: 20) {
+                        if let name = moduleData["name"] as? String {
+                            Text(name)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                        }
 
-                if let name = moduleData["name"] as? String {
-                    Text(name)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                }
+                        ForEach(sections) { section in
+                            Text(section.title)
+                                .font(.headline)
+                                .padding(.vertical, 5)
+                            
+                            Text(section.content)
+                                .font(.body)
 
-                ForEach(sections) { section in
-                    Text(section.title)
-                        .font(.headline)
-                        .padding(.vertical, 5)
-                    
-                    Text(section.content)
-                        .font(.body)
+                            ForEach(section.subsections) { subsection in
+                                Text(subsection.title)
+                                    .font(.subheadline)
+                                    .padding(.vertical, 3)
+                                
+                                Text(subsection.content)
+                                    .font(.body)
+                            }
+                        }
 
-                    ForEach(section.subsections) { subsection in
-                        Text(subsection.title)
-                            .font(.subheadline)
-                            .padding(.vertical, 3)
-                        
-                        Text(subsection.content)
-                            .font(.body)
+                        Button(action: {
+                            showQuiz = true
+                        }) {
+                            Text("Take Module Quiz")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                        }
+                        .padding(.top, 20)
                     }
+                    .padding()
+                }
+                .onAppear {
+                    loadModuleContent()
+                }
+                .sheet(isPresented: $showQuiz) {
+                    QuizView()
                 }
             }
-            .padding()
-        }
-        .onAppear {
-            loadModuleContent()
-        }
-    }
 
     func loadModuleContent() {
         let db = Firestore.firestore()
