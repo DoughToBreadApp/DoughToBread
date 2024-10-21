@@ -9,34 +9,26 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v4
     
-    - name: Cache SPM dependencies
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/Library/Developer/Xcode/DerivedData
-          ~/.swiftpm
-        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-        restore-keys: |
-          ${{ runner.os }}-spm-
-          
-    - name: Set up Xcode
-      run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: xcodebuild -resolvePackageDependencies
+    - name: Set up Ruby for xcpretty
+      run: gem install xcpretty
 
-    - name: Cache Xcode Derived Data
-      uses: actions/cache@v3
-      with:
-        path: ~/Library/Developer/Xcode/DerivedData
-        key: ${{ runner.os }}-xcode-${{ github.sha }}
+    - name: Clean Derived Data
+      run: |
+        rm -rf /Users/runner/Library/Developer/Xcode/DerivedData
 
     - name: Build
-      run: xcodebuild build -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM=""
-
-    - name: Run unit tests
-      run: xcodebuild test -scheme DoughToBread -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM="" -skip-testing:"DoughToBreadUITests"
+      run: |
+        xcodebuild build \
+          -scheme DoughToBread \
+          -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_ALLOWED=NO \
+          DEVELOPMENT_TEAM="" \
+          -skip-testing:"DoughToBreadUITests" \
+        | xcpretty

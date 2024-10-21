@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Module</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add a New Module</h1>
+        <form id="moduleForm">
+            <div class="form-group">
+                <label for="moduleName">Module Name:</label>
+                <input type="text" id="moduleName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="moduleDescription">Description:</label>
+                <textarea id="moduleDescription" required></textarea>
+            </div>
+
+            <div id="sections">
+                <div class="section">
+                    <h3>Section 1</h3>
+                    <div class="form-group">
+                        <label for="section1Title">Section Title:</label>
+                        <input type="text" id="section1Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="section1Content">Section Content:</label>
+                        <textarea id="section1Content" required></textarea>
+                    </div>
+
+                    <div class="subsections">
+                        <div class="subsection">
+                            <h4>Subsection 1</h4>
+                            <div class="form-group">
+                                <label for="subsection1Title">Subsection Title:</label>
+                                <input type="text" id="subsection1Title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subsection1Content">Subsection Content:</label>
+                                <textarea id="subsection1Content" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-subsection">Add Subsection</button>
+                </div>
+            </div>
+
+            <button type="button" id="addSection">Add Section</button>
+            <button type="submit">Add Module</button>
+        </form>
+
+        <div class="preview-container">
+            <h3>Preview of Module:</h3>
+            <div id="preview"></div>
+        </div>
+
+        <p id="statusMessage"></p>
+    </div>
+
+    <script src="/bundle.js"></script>
+</body>
+
+</html>

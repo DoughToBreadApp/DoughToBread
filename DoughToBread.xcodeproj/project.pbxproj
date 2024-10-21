@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E4592912CAF375B0005145E /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4592902CAF37570005145E /* MainAppView.swift */; };
 		0E4592952CAF43280005145E /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4592942CAF43200005145E /* UserProfileView.swift */; };
+		411C4F882CC4720D00E33086 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C4F872CC4720D00E33086 /* Module.swift */; };
 		4160BBBB2CB3780500DEA07F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBA2CB3780500DEA07F /* LoginView.swift */; };
 		4160BBBD2CB37A5600DEA07F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */; };
 		4160BBBF2CB37AD700DEA07F /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBE2CB37AD700DEA07F /* SignupView.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		0E4592902CAF37570005145E /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		0E4592942CAF43200005145E /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		411C4F872CC4720D00E33086 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		4160BBBA2CB3780500DEA07F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4160BBBE2CB37AD700DEA07F /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -110,9 +112,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41D78DC62CC484B300DA3BB0 /* FirebaseAdminScripts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FirebaseAdminScripts;
+			sourceTree = "<group>";
+		};
 		D10F12F02C950532009B3C67 = {
 			isa = PBXGroup;
 			children = (
+				41D78DC62CC484B300DA3BB0 /* FirebaseAdminScripts */,
 				D10F12FB2C950532009B3C67 /* DoughToBread */,
 				D10F130C2C950535009B3C67 /* DoughToBreadTests */,
 				D10F13162C950535009B3C67 /* DoughToBreadUITests */,
@@ -201,6 +211,7 @@
 			children = (
 				D127AA072C983E2F00C402C0 /* ExampleModel.swift */,
 				D169F3252CB1FA5A0043D63E /* Question.swift */,
+				411C4F872CC4720D00E33086 /* Module.swift */,
 				D15D68EB2CC4791200E57708 /* QuizQuestion.swift */,
 			);
 			path = Model;
@@ -360,6 +371,7 @@
 				0E4592952CAF43280005145E /* UserProfileView.swift in Sources */,
 				D127A9E72C98351800C402C0 /* Authentication.swift in Sources */,
 				D127AA0A2C983E3C00C402C0 /* ExampleViewModel.swift in Sources */,
+				411C4F882CC4720D00E33086 /* Module.swift in Sources */,
 				D15D68F22CC4796900E57708 /* QuizView.swift in Sources */,
 				4160BBBF2CB37AD700DEA07F /* SignupView.swift in Sources */,
 				D169F3262CB1FA5A0043D63E /* Question.swift in Sources */,
