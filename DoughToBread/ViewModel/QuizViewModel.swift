@@ -7,11 +7,14 @@
 
 import Foundation
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 class QuizViewModel: ObservableObject {
     @Published var questions: [QuizQuestion]
     @Published var quizCompleted = false
     @Published var correctAnswersCount = 0
+    @Published var badgeEarned = false
     
     init() {
         self.questions = [
@@ -36,10 +39,49 @@ class QuizViewModel: ObservableObject {
     func updateSelection(for questionIndex: Int, option optionIndex: Int) {
         questions[questionIndex].selectedAnswerIndex = optionIndex
     }
+
+func awardBadgeIfEligible() {
+    if quizCompleted {
+        let newBadge = Badge(
+            id: UUID().uuidString,
+            name: "Quiz Master",
+            description: "Completed a quiz with 100% accuracy",
+            level: .beginner,
+            type: .knowledge,
+            dateEarned: Date()
+        )
+        if let userId = Auth.auth().currentUser?.uid {
+            let db = Firestore.firestore()
+            let badgeData: [String: Any] = [
+                "name": newBadge.name,
+                "description": newBadge.description,
+                "level": newBadge.level.rawValue,
+                "type": newBadge.type.rawValue,
+                "dateEarned": Timestamp(date: newBadge.dateEarned)
+            ]
+            db.collection("user_badges").document(userId).setData([
+                "badges": [newBadge.id: badgeData]
+            ], merge: true) { error in
+                if let error = error {
+                    print("Error saving badge: \(error)")
+                } else {
+                    print("Badge saved successfully")
+                }
+            }
+        } else {
+            print("No user logged in, can't save badge")
+        }
+        badgeEarned = true
+        print("Badge earned set to true")
+    }
+}
     
     func checkAnswers() {
         correctAnswersCount = questions.filter { $0.selectedAnswerIndex == $0.correctAnswerIndex }.count
         quizCompleted = correctAnswersCount == questions.count
+        if quizCompleted {
+            awardBadgeIfEligible()
+        }
     }
     
     var allQuestionsAnswered: Bool {
