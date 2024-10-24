@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct QuizView: View {
-    @StateObject private var viewModel = QuizViewModel()
+    @ObservedObject var viewModel: QuizViewModel
     @State private var showingResult = false
     @State private var quizSubmitted = false
     
@@ -110,6 +110,6 @@ struct QuizOptionRow: View {
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView()
+        QuizView(viewModel: QuizViewModel())
     }
 }

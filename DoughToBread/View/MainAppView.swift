@@ -113,7 +113,7 @@ struct ModuleDetailView: View {
                     loadModuleContent()
                 }
                 .sheet(isPresented: $showQuiz) {
-                    QuizView()
+                    QuizView(viewModel: QuizViewModel())
                 }
             }
 
