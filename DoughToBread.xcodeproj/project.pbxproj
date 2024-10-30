@@ -13,6 +13,7 @@
 		4160BBBB2CB3780500DEA07F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBA2CB3780500DEA07F /* LoginView.swift */; };
 		4160BBBD2CB37A5600DEA07F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */; };
 		4160BBBF2CB37AD700DEA07F /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBE2CB37AD700DEA07F /* SignupView.swift */; };
+		722ADAFE2CD1AD93002F05E8 /* Badge 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722ADAFD2CD1AD93002F05E8 /* Badge 2.swift */; };
 		D10F12FD2C950532009B3C67 /* DoughToBreadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F12FC2C950532009B3C67 /* DoughToBreadApp.swift */; };
 		D10F12FF2C950532009B3C67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F12FE2C950532009B3C67 /* ContentView.swift */; };
 		D10F13012C950535009B3C67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D10F13002C950535009B3C67 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		4160BBBA2CB3780500DEA07F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4160BBBE2CB37AD700DEA07F /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		722ADAFD2CD1AD93002F05E8 /* Badge 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge 2.swift"; sourceTree = "<group>"; };
 		D10F12F92C950532009B3C67 /* DoughToBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoughToBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10F12FC2C950532009B3C67 /* DoughToBreadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughToBreadApp.swift; sourceTree = "<group>"; };
 		D10F12FE2C950532009B3C67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				D169F3252CB1FA5A0043D63E /* Question.swift */,
 				411C4F872CC4720D00E33086 /* Module.swift */,
 				D15D68EB2CC4791200E57708 /* QuizQuestion.swift */,
+				722ADAFD2CD1AD93002F05E8 /* Badge 2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				D10F12FD2C950532009B3C67 /* DoughToBreadApp.swift in Sources */,
 				0E4592912CAF375B0005145E /* MainAppView.swift in Sources */,
 				D169F3282CB1FACC0043D63E /* PollViewModel.swift in Sources */,
+				722ADAFE2CD1AD93002F05E8 /* Badge 2.swift in Sources */,
 				4160BBBB2CB3780500DEA07F /* LoginView.swift in Sources */,
 				D169F32A2CB1FAE00043D63E /* PollView.swift in Sources */,
 				4160BBBD2CB37A5600DEA07F /* LoginViewModel.swift in Sources */,
