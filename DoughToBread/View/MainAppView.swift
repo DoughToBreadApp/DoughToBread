@@ -148,26 +148,41 @@ struct ModuleDetailView: View {
 
 struct MainAppView: View {
     var shouldNavigate: Bool
+    @State var showInteractiveWindow : Bool = false
     
     var body: some View {
-        TabView {
-            CoursesView()
-                .tabItem {
-                    Image(systemName: "book.fill")
-                    Text("Courses")
+        NavigationView{
+            TabView {
+                CoursesView()
+                    .tabItem {
+                        Image(systemName: "book.fill")
+                        Text("Courses")
+                    }
+                
+                CalculatorView()
+                    .tabItem {
+                        Image(systemName: "function")
+                        Text("Calculator")
+                    }
+                
+                UserProfileView(shouldNavigate: shouldNavigate)
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Profile")
+                    }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showInteractiveWindow = true
+                    }) {
+                        Image(systemName: "message.badge")
+                    }
                 }
-            
-            CalculatorView()
-                .tabItem {
-                    Image(systemName: "function")
-                    Text("Calculator")
-                }
-            
-            UserProfileView(shouldNavigate: shouldNavigate)
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Profile")
-                }
+            }
+        }
+        .sheet(isPresented: $showInteractiveWindow) {
+            DailyBreadView()
         }
     }
 }
@@ -188,4 +203,8 @@ struct ProfileView: View {
             .fontWeight(.bold)
             .padding()
     }
+}
+
+#Preview {
+    MainAppView(shouldNavigate: true)
 }
