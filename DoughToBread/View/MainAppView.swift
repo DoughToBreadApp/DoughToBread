@@ -172,14 +172,6 @@ struct MainAppView: View {
     }
 }
 
-struct CalculatorView: View {
-    var body: some View {
-        Text("Calculator View")
-            .font(.largeTitle)
-            .fontWeight(.bold)
-            .padding()
-    }
-}
 
 struct ProfileView: View {
     var body: some View {
