@@ -1,5 +1,7 @@
 import Foundation
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 class PollViewModel: ObservableObject {
     @Published var questions: [Question] = []
@@ -95,6 +97,27 @@ class PollViewModel: ObservableObject {
     }
 
     func submitPoll() {
-        
-    }
+            guard let userID = Auth.auth().currentUser?.uid else { return }
+            
+            // Create dictionary of poll answers
+            let pollAnswers = questions.map { question in
+                return [
+                    "question": question.text,
+                    "answer": question.selectedOption?.text ?? "",
+                    "otherText": question.selectedOption?.otherText ?? ""
+                ]
+            }
+            
+            // Save to Firestore
+            let db = Firestore.firestore()
+            db.collection("users").document(userID).setData([
+                "hasCompletedPoll": true,
+                "pollAnswers": pollAnswers,
+                "completedAt": FieldValue.serverTimestamp()
+            ], merge: true) { error in
+                if let error = error {
+                    print("Error saving poll results: \(error)")
+                }
+            }
+        }
 }
