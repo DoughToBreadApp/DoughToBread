@@ -45,7 +45,7 @@ struct UserProfileView: View {
                 
                 // badges section
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Achievements")
+                    Text("Badges")
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.horizontal)
