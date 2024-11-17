@@ -56,7 +56,8 @@ class BudgetViewModel: ObservableObject {
 }
 
 struct CalculatorView: View {
-    @StateObject private var viewModel = BudgetViewModel()
+    @StateObject private var budgetViewModel = BudgetViewModel()
+    @StateObject private var calculatorViewModel = CalculatorViewModel()
     @State private var selectedCategory: String = "Housing"
     @State private var itemAmount: String = ""
     
@@ -66,7 +67,7 @@ struct CalculatorView: View {
                 .font(.headline)
                 .padding(.top)
             
-            TextField("Monthly Income", value: $viewModel.income, formatter: NumberFormatter())
+            TextField("Monthly Income", value: $budgetViewModel.income, formatter: NumberFormatter())
                 .keyboardType(.decimalPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
@@ -75,7 +76,7 @@ struct CalculatorView: View {
                 .padding()
             
             Picker("Select Category", selection: $selectedCategory) {
-                ForEach(viewModel.predefinedCategories, id: \.self) { category in
+                ForEach(budgetViewModel.predefinedCategories, id: \.self) { category in
                     Text(category).tag(category)
                 }
             }
@@ -87,9 +88,10 @@ struct CalculatorView: View {
             
             Button(action: {
                 if let amount = Double(itemAmount) {
-                    viewModel.addItem(name: selectedCategory, amount: amount)
+                    budgetViewModel.addItem(name: selectedCategory, amount: amount)
                     itemAmount = ""
                 }
+                calculatorViewModel.incrementCalculatorUse()
             }) {
                 Text("Add Item")
                     .padding()
@@ -100,14 +102,14 @@ struct CalculatorView: View {
             .padding()
             
             List {
-                ForEach(viewModel.budgetItems) { item in
+                ForEach( budgetViewModel.budgetItems) { item in
                     HStack {
                         Text(item.name)
                         Spacer()
                         Text("$\(item.amount, specifier: "%.2f")")
                         Button(action: {
-                            if let index = viewModel.budgetItems.firstIndex(where: { $0.id == item.id }) {
-                                viewModel.deleteItem(at: IndexSet(integer: index))
+                            if let index =  budgetViewModel.budgetItems.firstIndex(where: { $0.id == item.id }) {
+                                budgetViewModel.deleteItem(at: IndexSet(integer: index))
                             }
                         }) {
                             Text("X")
@@ -118,22 +120,22 @@ struct CalculatorView: View {
                 }
             }
             
-            Text("Total Expenses: $\(viewModel.totalExpenses, specifier: "%.2f")")
+            Text("Total Expenses: $\( budgetViewModel.totalExpenses, specifier: "%.2f")")
                 .font(.headline)
                 .padding()
             
-            if viewModel.income > 0 {
-                Text("Income: $\(viewModel.income, specifier: "%.2f")")
+            if  budgetViewModel.income > 0 {
+                Text("Income: $\( budgetViewModel.income, specifier: "%.2f")")
                     .font(.headline)
                     .padding()
                 
-                let savings = viewModel.income - viewModel.totalExpenses
+                let savings =  budgetViewModel.income -  budgetViewModel.totalExpenses
                 Text("Potential Savings: $\(savings, specifier: "%.2f")")
                     .foregroundColor(savings >= 0 ? .green : .red)
                     .padding()
                 
-                ForEach(viewModel.budgetItems) { item in
-                    let percentage = (item.amount / viewModel.income) * 100
+                ForEach( budgetViewModel.budgetItems) { item in
+                    let percentage = (item.amount /  budgetViewModel.income) * 100
                     Text("\(item.name): \(percentage, specifier: "%.2f")% of Income")
                 }
             }

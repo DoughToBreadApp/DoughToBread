@@ -21,6 +21,6 @@ struct Badge: Identifiable, Codable {
     }
     
     enum BadgeType: String, Codable {
-        case knowledge, skill, achievement, community
+        case knowledge, skill, achievement, community, calculators
     }
 }
