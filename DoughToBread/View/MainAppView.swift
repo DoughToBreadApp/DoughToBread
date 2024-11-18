@@ -180,6 +180,15 @@ struct MainAppView: View {
                     }
                 }
             }
+            .onAppear {
+                // set the tab bar background color
+                let appearance = UITabBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = .systemBackground
+                
+                UITabBar.appearance().scrollEdgeAppearance = appearance
+                UITabBar.appearance().standardAppearance = appearance
+            }
         }
         .sheet(isPresented: $showInteractiveWindow) {
             DailyBreadView()

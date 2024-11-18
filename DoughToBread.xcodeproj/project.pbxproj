@@ -17,6 +17,7 @@
 		4160BBBB2CB3780500DEA07F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBA2CB3780500DEA07F /* LoginView.swift */; };
 		4160BBBD2CB37A5600DEA07F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */; };
 		4160BBBF2CB37AD700DEA07F /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4160BBBE2CB37AD700DEA07F /* SignupView.swift */; };
+		720EF0C72CEAADA000B1E702 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720EF0C62CEAADA000B1E702 /* CalculatorViewModel.swift */; };
 		722ADAFE2CD1AD93002F05E8 /* Badge 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722ADAFD2CD1AD93002F05E8 /* Badge 2.swift */; };
 		A9EB8B542CD80F2E0037AD0A /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB8B532CD80F230037AD0A /* CalculatorView.swift */; };
 		D10F12FD2C950532009B3C67 /* DoughToBreadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10F12FC2C950532009B3C67 /* DoughToBreadApp.swift */; };
@@ -70,6 +71,7 @@
 		4160BBBA2CB3780500DEA07F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4160BBBE2CB37AD700DEA07F /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		720EF0C62CEAADA000B1E702 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 		722ADAFD2CD1AD93002F05E8 /* Badge 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge 2.swift"; sourceTree = "<group>"; };
 		A9EB8B532CD80F230037AD0A /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		D10F12F92C950532009B3C67 /* DoughToBread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoughToBread.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +214,7 @@
 		D127AA052C983DE200C402C0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				720EF0C62CEAADA000B1E702 /* CalculatorViewModel.swift */,
 				D127AA092C983E3C00C402C0 /* ExampleViewModel.swift */,
 				D169F3272CB1FACC0043D63E /* PollViewModel.swift */,
 				4160BBBC2CB37A5600DEA07F /* LoginViewModel.swift */,
@@ -398,6 +401,7 @@
 				3B3367162CD768F40014E515 /* DailyBread.swift in Sources */,
 				D15D68F22CC4796900E57708 /* QuizView.swift in Sources */,
 				4160BBBF2CB37AD700DEA07F /* SignupView.swift in Sources */,
+				720EF0C72CEAADA000B1E702 /* CalculatorViewModel.swift in Sources */,
 				D169F3262CB1FA5A0043D63E /* Question.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
