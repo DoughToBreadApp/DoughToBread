@@ -8,7 +8,10 @@
 import SwiftUI
 import FirebaseAuth
 
+
+// UserProfileView showcases the user's information & badges, and also has a logout option
 struct UserProfileView: View {
+    // ViewModels for managing the user's data
     @StateObject private var viewModel = UserProfileViewModel()
     @StateObject private var quizViewModel = QuizViewModel()
     @StateObject private var calculatorViewModel = CalculatorViewModel()
@@ -25,6 +28,7 @@ struct UserProfileView: View {
                         .frame(width: 80, height: 80)
                         .foregroundColor(.blue)
                     
+                    // user information from Firebase Auth
                     if let user = Auth.auth().currentUser {
                         VStack(spacing: 8) {
                             Text(user.displayName ?? "Unknown")
@@ -108,6 +112,8 @@ struct UserProfileView: View {
         }
     }
 }
+
+// Displays a grid of the user's earned badges
 struct BadgesView: View {
     let badges: [Badge]
     
@@ -122,6 +128,7 @@ struct BadgesView: View {
                 }
                 .padding()
             } else {
+                // responsive grid layout for user badges
                 LazyVGrid(columns: [
                     GridItem(.adaptive(minimum: 160), spacing: 16)
                 ], spacing: 16) {
@@ -134,6 +141,7 @@ struct BadgesView: View {
     }
 }
 
+// struct for individual badge cards in the grid
 struct BadgeRow: View {
     let badge: Badge
     
@@ -169,16 +177,18 @@ struct BadgeRow: View {
         .shadow(color: .gray.opacity(0.1), radius: 3)
     }
     
+    // returns the appropriate badge icon based on badge type
     private func getBadgeIcon(for type: Badge.BadgeType) -> String {
         switch type {
         case .knowledge: return "book.fill"
         case .skill: return "hammer.fill"
         case .achievement: return "star.fill"
         case .community: return "person.2.fill"
-        case .calculators: return "calculator"
+        case .calculators: return "function"
         }
     }
     
+    // sets badge color based on type
     private func getBadgeColor(for level: Badge.BadgeLevel) -> Color {
         switch level {
         case .beginner: return .green

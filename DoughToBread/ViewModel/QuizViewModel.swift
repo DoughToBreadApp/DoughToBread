@@ -40,7 +40,12 @@ class QuizViewModel: ObservableObject {
         questions[questionIndex].selectedAnswerIndex = optionIndex
     }
 
-
+    // performs the badge awarding process for quiz badges
+    // 1. checks if badge exists
+    // 2. if not, creates new badge for user
+    // 3. persists new badge to firestore DB
+    // 4. sets badgeEarned to true, which should reflect changes on profile page
+    
     func awardBadgeIfEligible() {
         if quizCompleted {
             let badgeName = "Quiz Expert"

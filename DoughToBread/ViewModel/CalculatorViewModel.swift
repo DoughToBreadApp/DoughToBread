@@ -10,10 +10,14 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
+
+// The CalculatorViewModel tracks a user's calculator usage and awards badges accordingly.
+
 class CalculatorViewModel: ObservableObject {
     @Published var badgeEarned = false
-    @Published var calculatorUseCount = 0
+    @Published var calculatorUseCount = 0 // tracks total calculator usage of user
     
+    // increments user's calculator usage; reflects changes in Firestore in the 'calculator_usage' collection
     func incrementCalculatorUse() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         let db = Firestore.firestore()
@@ -37,6 +41,7 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
+    // getBadgeLevel() determines the user's badge level based on their calculator usage
     private func getBadgeLevel() -> Badge.BadgeLevel {
         switch calculatorUseCount {
             case 1: return .beginner
@@ -46,6 +51,7 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
+    // getBadgeName() determines the user's badge level based on their calculator usage
     private func getBadgeName() -> String {
         switch calculatorUseCount {
             case 1: return "Calculator Novice"
@@ -55,6 +61,11 @@ class CalculatorViewModel: ObservableObject {
         }
     }
     
+    // handles badge awarding
+    // 1. checks if the user has badge
+    // 2. if not, create a new badge for user
+    // 3. persist the new badge to firestore
+    // 4. sets badgeEarned to true, which should result in badge appearing on profile page
     func awardCalculatorBadge() {
         let badgeName = getBadgeName()
         checkForExistingBadge(name: badgeName) { [weak self] badgeExists in

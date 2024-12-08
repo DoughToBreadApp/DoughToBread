@@ -38,13 +38,17 @@ class UserProfileViewModel: ObservableObject {
     
     @Published var userBadges: [Badge] = []
 
+    // fetches & updates user badges from firestore
+    // grabs badges from user_badges collection, turns badge data into badge objects, and updates userBadges
 func fetchUserBadges() {
-    guard let userId = Auth.auth().currentUser?.uid else { 
+    // verify that the user is logged in
+    guard let userId = Auth.auth().currentUser?.uid else {
         print("No user logged in")
         return 
     }
     print("Fetching badges for user: \(userId)")
     let db = Firestore.firestore()
+    // grab the users badge document
     db.collection("user_badges").document(userId).getDocument { [weak self] (document, error) in
         if let error = error {
             print("Error fetching user badges: \(error)")
@@ -66,6 +70,7 @@ func fetchUserBadges() {
                             print("Failed to parse badge data: \(value)")
                             return nil
                         }
+                        // create and return a new badge object
                         return Badge(id: key, name: name, description: description, level: level, type: type, dateEarned: dateEarned)
                     }
                     print("Fetched badges: \(self?.userBadges ?? [])")
