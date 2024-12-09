@@ -3,21 +3,29 @@
 //  DoughToBread
 //
 //  Created by Kevin Gerges on 10/6/24.
+//
+
+// Import SwiftUI framework for UI components
 import SwiftUI
 
+// Main login view structure
 struct LoginView: View {
+    // StateObject to manage login-related data and authentication
     @StateObject private var viewModel = LoginViewModel()
 
     var body: some View {
+        // Main container with vertical stack
         VStack(spacing: 50) {
             Spacer()
 
+            // App logo
             Image("logo")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100, height: 100)
                 .padding(.top, 40)
 
+            // Welcome text section
             VStack(spacing: 8) {
                 Text("Welcome to")
                     .font(.system(size: 24, weight: .medium, design: .default))
@@ -28,7 +36,9 @@ struct LoginView: View {
                     .foregroundColor(.primary)
             }
 
+            // Login form fields
             VStack(spacing: 16) {
+                // Email input field
                 TextField("Email", text: $viewModel.email)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
@@ -36,6 +46,7 @@ struct LoginView: View {
                     .background(Color(.secondarySystemBackground))
                     .cornerRadius(5)
 
+                // Password input field
                 SecureField("Password", text: $viewModel.password)
                     .padding()
                     .background(Color(.secondarySystemBackground))
@@ -43,6 +54,7 @@ struct LoginView: View {
             }
             .padding(.horizontal, 16)
 
+            // Email login button
             Button(action: {
                 Task {
                     await viewModel.emailLogin()
@@ -57,7 +69,7 @@ struct LoginView: View {
             }
             .padding(.horizontal)
 
-        
+            // Google sign-in button
             Button(action: {
                 Task {
                     await viewModel.googleLogin()
@@ -76,19 +88,18 @@ struct LoginView: View {
             }
             .padding(.horizontal)
             
-            
-             // might add it later
-//            // Forgot Password
-//            Button(action: {
-//                // Add forgot password functionality here
-//            }) {
-//                Text("Forgot Password?")
-//                    .font(.footnote)
-//                    .foregroundColor(.blue)
-//            }
-//            .padding(.top)
+            // Commented out forgot password functionality for future implementation
+            // // Forgot Password
+            // Button(action: {
+            //     // Add forgot password functionality here
+            // }) {
+            //     Text("Forgot Password?")
+            //         .font(.footnote)
+            //         .foregroundColor(.blue)
+            // }
+            // .padding(.top)
 
-            
+            // Sign up navigation link
             NavigationLink(destination: SignUpView(viewModel: viewModel)) {
                 Text("Don't have an account? Sign Up")
                     .font(.footnote)
@@ -96,6 +107,7 @@ struct LoginView: View {
                     .padding(.top)
             }
 
+            // Error message display
             if !viewModel.errorMessage.isEmpty {
                 Text(viewModel.errorMessage)
                     .foregroundColor(.red)
@@ -103,6 +115,7 @@ struct LoginView: View {
                     .padding(.top, 10)
             }
 
+            // Terms and conditions disclaimer
             Text("By signing in, you agree to our terms and conditions.")
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -110,6 +123,7 @@ struct LoginView: View {
                 .padding(.horizontal, 24)
                 .padding(.bottom, 30)
         }
+        // Hide navigation bar for this view
         .navigationTitle("")
         .navigationBarHidden(true)
     }
