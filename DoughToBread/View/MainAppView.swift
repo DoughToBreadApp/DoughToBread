@@ -4,6 +4,24 @@
 //
 //  Created by Nona Nersisyan on 10/3/24.
 //
+
+
+//  Description:
+//  This file defines the main application view for the "DoughToBread" app.
+//  It serves as the entry point to the app's core functionality, organizing the user experience 
+//  into three primary tabs: Courses, Calculator, and Profile. Each tab provides access to a distinct
+//  feature of the app.
+//
+//  Key Features:
+//  - Courses Tab: Displays a list of available modules pulled from Firebase Firestore, 
+//    with navigation to detailed module content and quizzes.
+//  - Calculator Tab: Hosts financial calculation tools (implementation in `CalculatorView`).
+//  - Profile Tab: Displays user profile information and navigation options.
+//  - Interactive Window: Accessible via the toolbar for supplementary features.
+//  - Dynamic Data Loading: Fetches modules and content in real-time from Firestore.
+//  - Clean and Intuitive UI: Designed with SwiftUI for modern and responsive user interactions.
+//
+
 import SwiftUI
 import Firebase
 import FirebaseAuth
