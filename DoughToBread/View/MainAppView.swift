@@ -5,7 +5,6 @@
 //  Created by Nona Nersisyan on 10/3/24.
 //
 
-
 //  Description:
 //  This file defines the main application view for the "DoughToBread" app.
 //  It serves as the entry point to the app's core functionality, organizing the user experience 
@@ -27,6 +26,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
+// Define data structures for course content organization
+// Section represents a main topic in a course module
 struct Section: Identifiable {
     var id = UUID()
     var title: String
@@ -34,17 +35,22 @@ struct Section: Identifiable {
     var subsections: [Subsection]
 }
 
+// Subsection represents subtopics within a main section
 struct Subsection: Identifiable {
     var id = UUID()
     var title: String
     var content: String
 }
 
+// Main view for displaying available courses
 struct CoursesView: View {
+    // State variable to store course modules
     @State private var modules: [Module] = []
 
     var body: some View {
+        // Create navigation view for course listing
         NavigationView {
+            // Display modules in a list with navigation links
             List(modules) { module in
                 NavigationLink(destination: ModuleDetailView(moduleId: module.id)) {
                     VStack(alignment: .leading) {
@@ -57,15 +63,18 @@ struct CoursesView: View {
             }
             .navigationTitle("Courses")
         }
+        // Load modules when view appears
         .onAppear(perform: loadModules)
     }
     
+    // Function to fetch modules from Firestore database
     func loadModules() {
         let db = Firestore.firestore()
         db.collection("modules").getDocuments { (snapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
+                // Map Firestore documents to Module objects
                 self.modules = snapshot?.documents.map { document in
                     let data = document.data()
                     return Module(
@@ -79,62 +88,69 @@ struct CoursesView: View {
     }
 }
 
+// Detailed view for individual course modules
 struct ModuleDetailView: View {
     var moduleId: String
+    // State variables to store module data and control quiz visibility
     @State private var moduleData: [String: Any] = [:]
     @State private var sections: [Section] = []
     @State private var showQuiz = false
 
     var body: some View {
         ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        if let name = moduleData["name"] as? String {
-                            Text(name)
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                        }
+            VStack(alignment: .leading, spacing: 20) {
+                // Display module name if available
+                if let name = moduleData["name"] as? String {
+                    Text(name)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                }
 
-                        ForEach(sections) { section in
-                            Text(section.title)
-                                .font(.headline)
-                                .padding(.vertical, 5)
-                            
-                            Text(section.content)
-                                .font(.body)
+                // Iterate through sections and subsections
+                ForEach(sections) { section in
+                    Text(section.title)
+                        .font(.headline)
+                        .padding(.vertical, 5)
+                    
+                    Text(section.content)
+                        .font(.body)
 
-                            ForEach(section.subsections) { subsection in
-                                Text(subsection.title)
-                                    .font(.subheadline)
-                                    .padding(.vertical, 3)
-                                
-                                Text(subsection.content)
-                                    .font(.body)
-                            }
-                        }
-
-                        Button(action: {
-                            showQuiz = true
-                        }) {
-                            Text("Take Module Quiz")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue)
-                                .cornerRadius(10)
-                        }
-                        .padding(.top, 20)
+                    ForEach(section.subsections) { subsection in
+                        Text(subsection.title)
+                            .font(.subheadline)
+                            .padding(.vertical, 3)
+                        
+                        Text(subsection.content)
+                            .font(.body)
                     }
-                    .padding()
                 }
-                .onAppear {
-                    loadModuleContent()
-                }
-                .sheet(isPresented: $showQuiz) {
-                    QuizView(viewModel: QuizViewModel())
-                }
-            }
 
+                // Quiz button
+                Button(action: {
+                    showQuiz = true
+                }) {
+                    Text("Take Module Quiz")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                .padding(.top, 20)
+            }
+            .padding()
+        }
+        // Load content when view appears and handle quiz presentation
+        .onAppear {
+            loadModuleContent()
+        }
+        .sheet(isPresented: $showQuiz) {
+            QuizView(viewModel: QuizViewModel())
+        }
+    }
+
+    // Function to load detailed module content from Firestore
     func loadModuleContent() {
         let db = Firestore.firestore()
         db.collection("modules").document(moduleId).getDocument { (document, error) in
@@ -142,6 +158,7 @@ struct ModuleDetailView: View {
                 let data = document.data() ?? [:]
                 self.moduleData = data
                 
+                // Parse and create section objects from Firestore data
                 if let sectionData = data["sections"] as? [[String: Any]] {
                     self.sections = sectionData.map { sectionDict in
                         let title = sectionDict["title"] as? String ?? "Untitled Section"
@@ -164,12 +181,14 @@ struct ModuleDetailView: View {
     }
 }
 
+// Main app container view with tab navigation
 struct MainAppView: View {
     var shouldNavigate: Bool
     @State var showInteractiveWindow : Bool = false
     
     var body: some View {
         NavigationView{
+            // Tab view with Courses, Calculator, and Profile sections
             TabView {
                 CoursesView()
                     .tabItem {
@@ -189,6 +208,7 @@ struct MainAppView: View {
                         Text("Profile")
                     }
             }
+            // Add interactive window button to navigation bar
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -198,8 +218,8 @@ struct MainAppView: View {
                     }
                 }
             }
+            // Configure tab bar appearance
             .onAppear {
-                // set the tab bar background color
                 let appearance = UITabBarAppearance()
                 appearance.configureWithOpaqueBackground()
                 appearance.backgroundColor = .systemBackground
@@ -208,13 +228,14 @@ struct MainAppView: View {
                 UITabBar.appearance().standardAppearance = appearance
             }
         }
+        // Present interactive window as a sheet
         .sheet(isPresented: $showInteractiveWindow) {
             DailyBreadView()
         }
     }
 }
 
-
+// Basic profile view placeholder
 struct ProfileView: View {
     var body: some View {
         Text("Profile View")
@@ -224,6 +245,7 @@ struct ProfileView: View {
     }
 }
 
+// Preview provider for SwiftUI canvas
 #Preview {
     MainAppView(shouldNavigate: true)
 }
