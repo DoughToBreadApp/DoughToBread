@@ -9,12 +9,14 @@
 import Foundation
 import SwiftUI
 
+
 // Main view for displaying daily devotional content
 struct DailyBreadView: View {
     // StateObject to manage daily bread content and logic
     @StateObject private var viewModel = DailyBreadViewModel()
     // State variable to store current daily bread content
     @State private var dailyBread = DailyBread()
+
     // Environment variable to handle view dismissal
     @Environment(\.dismiss) var dismiss
     
@@ -22,6 +24,7 @@ struct DailyBreadView: View {
         // Scrollable container for content
         ScrollView {
             VStack {
+
                 // Get today's verse from view model
                 let dailyBread = viewModel.getTodaysVerse()
                 
