@@ -3,6 +3,19 @@
 //  DoughToBread
 //
 //  Created by Kevin Gerges on 10/6/24.
+
+//  Description:
+//  This file defines the LoginView, a SwiftUI view that provides the user interface for logging
+//  into the "DoughToBread" app. It allows users to authenticate using email/password or Google,
+//  and provides a navigation option to the sign-up screen for new users.
+//
+//  Key Features:
+//  - Email and Password Login: Inputs for securely entering login credentials.
+//  - Google Login: Integration for logging in with Google credentials.
+//  - Navigation to Sign-Up: A link for users without an account to navigate to the sign-up screen.
+//  - Error Handling: Displays error messages for invalid inputs or login failures.
+//  - Clean UI Design: Includes branding with the app logo and a responsive layout using SwiftUI.
+
 import SwiftUI
 
 struct LoginView: View {

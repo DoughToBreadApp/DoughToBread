@@ -1,3 +1,13 @@
+/**
+ * This file initializes the Firebase Admin SDK to connect to the Firestore database
+ * It defines the data structure for educational modules
+ * and pushes the first module ("Understanding Financial Basics") into the database.
+ * 
+ * The module contains a name, description, and structured sections with subsections
+ * to provide detailed learning content. This is the first module being pushed
+ * to the database as part of the project's setup process.
+ */
+
 import * as admin from 'firebase-admin';
 
 const firebaseConfig = require('./DoughToBreadApp_Firebase_Admin.json'); 

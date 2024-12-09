@@ -1,3 +1,8 @@
+<!-- This HTML file serves as the admin interface for adding and previewing modules -->
+<!-- Admins can input details like module name, description, sections, and subsections -->
+<!-- It provides a preview area to visualize the module before saving it to the database -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,28 +17,33 @@
     <div class="container">
         <h1>Add a New Module</h1>
         <form id="moduleForm">
+            <!-- Input for module name -->
             <div class="form-group">
                 <label for="moduleName">Module Name:</label>
                 <input type="text" id="moduleName" required>
             </div>
-
+            
+            <!-- Input for module description -->
             <div class="form-group">
                 <label for="moduleDescription">Description:</label>
                 <textarea id="moduleDescription" required></textarea>
             </div>
 
+            <!-- Section container where multiple sections can be added -->
             <div id="sections">
                 <div class="section">
                     <h3>Section 1</h3>
+                    <!-- Input for section title -->
                     <div class="form-group">
                         <label for="section1Title">Section Title:</label>
                         <input type="text" id="section1Title" required>
                     </div>
+                    <!-- Input for section content -->
                     <div class="form-group">
                         <label for="section1Content">Section Content:</label>
                         <textarea id="section1Content" required></textarea>
                     </div>
-
+                    <!-- Subsection container where multiple subsections can be added -->
                     <div class="subsections">
                         <div class="subsection">
                             <h4>Subsection 1</h4>
@@ -41,6 +51,7 @@
                                 <label for="subsection1Title">Subsection Title:</label>
                                 <input type="text" id="subsection1Title" required>
                             </div>
+                            <!-- Input for subsection title -->
                             <div class="form-group">
                                 <label for="subsection1Content">Subsection Content:</label>
                                 <textarea id="subsection1Content" required></textarea>
@@ -51,7 +62,9 @@
                 </div>
             </div>
 
+            <!-- Button to add more subsections within a section -->
             <button type="button" id="addSection">Add Section</button>
+            <!-- Submit button to save the module -->
             <button type="submit">Add Module</button>
         </form>
 
@@ -62,6 +75,8 @@
 
         <p id="statusMessage"></p>
     </div>
+
+    <!-- Linking to the JavaScript file that handles form submissions and preview logic -->
 
     <script src="/bundle.js"></script>
 </body>
