@@ -12,15 +12,13 @@ struct DailyBread: Identifiable, Decodable{
     var title: String
     var verse: String
     var body: String
-    //var comment: String?
     
-    init(title: String = "", verse: String = "", body: String = "" /*comment: String? = ""*/)
+    init(title: String = "", verse: String = "", body: String = "")
     {
         self.id = UUID().uuidString
         self.title = title
         self.verse = verse
         self.body = body
-        //self.comment = comment
     }
     
     init(from decoder: Decoder) throws {

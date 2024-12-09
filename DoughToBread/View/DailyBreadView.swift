@@ -9,20 +9,22 @@ import Foundation
 import SwiftUI
 
 struct DailyBreadView: View {
+    //viewModel variable for loading scripture of the day that gets set to dailyBread
     @StateObject private var viewModel = DailyBreadViewModel()
     @State private var dailyBread = DailyBread()
+    //allows for closing daily bread
     @Environment(\.dismiss) var dismiss
     
     
     var body: some View {
         ScrollView {
             VStack {
+                //prints the elements of dailyBread object vertically
                 let dailyBread = viewModel.getTodaysVerse()
                     Text("Daily Bread")
                         .font(.system(size: 54, weight: .bold))
                         .foregroundStyle(.green)
                         .padding()
-                        
                     Text(dailyBread.title)
                         .font(.system(size: 28, weight: .bold))
                         .multilineTextAlignment(.center)

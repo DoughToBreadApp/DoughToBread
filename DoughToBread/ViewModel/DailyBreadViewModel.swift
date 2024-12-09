@@ -6,10 +6,12 @@
 //
 
 import Foundation
-//might need to import firestore/firebase if we choose to store verses in firebase
+//class for loading in scriptures and setting start day for first scripture
 
 class DailyBreadViewModel: ObservableObject {
     @Published var dailyBread: DailyBread
+    //var startDate holds first day daily bread starts
+    //currently 11/03/2024
     var startDate: Date{
         var components = DateComponents()
                 components.year = 2024
@@ -17,9 +19,12 @@ class DailyBreadViewModel: ObservableObject {
                 components.day = 3
                 return Calendar.current.date(from: components) ?? Date()
     }
+    //array for loading in scriptures from JSON file "scriptures"
     var scriptures: [DailyBread] = []
+    //keeps track of which scripture to output
     var daysSinceStart: Int = 0
     
+    //constructor
     init(dailyBread: DailyBread = DailyBread(title: "Sample Title", verse: "Sample Verse", body: "Sample body")) {
         self.dailyBread = dailyBread
         getScriptures()
@@ -44,7 +49,7 @@ class DailyBreadViewModel: ObservableObject {
                 }
 
     }
-    
+    //calculates the days that have passed since the start date
     func calcDaysSinceStart() {
         //get the current date
         let today = Date()
@@ -59,6 +64,7 @@ class DailyBreadViewModel: ObservableObject {
         print("days since start: \(daysSinceStart)")
     }
     
+    //returns the verse of the day
     func getTodaysVerse() -> DailyBread {
         //use the daysSinceStart var to get the correct verse for the day
         if scriptures.isEmpty {
