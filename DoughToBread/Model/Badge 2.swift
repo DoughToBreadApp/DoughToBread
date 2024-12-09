@@ -13,6 +13,12 @@
 //  Created by Neil Maharishi on 10/21/24.
 //
 
+
+// This file contains the struct implementation for the application's badges.
+// Currently, badges come in four levels (beginner, intermediate, advanced, expert).
+// Calculator and knowledge badge implementations have been completed.
+// The community badge is incomplete as we did not yet implement the comment/interaction sections.
+
 import Foundation
 import FirebaseFirestore
 
