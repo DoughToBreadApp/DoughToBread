@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+//this file provides the UI for the daily scripture messages
+
 struct DailyBreadView: View {
     //viewModel variable for loading scripture of the day that gets set to dailyBread
     @StateObject private var viewModel = DailyBreadViewModel()
@@ -21,18 +23,22 @@ struct DailyBreadView: View {
             VStack {
                 //prints the elements of dailyBread object vertically
                 let dailyBread = viewModel.getTodaysVerse()
+                    //title
                     Text("Daily Bread")
                         .font(.system(size: 54, weight: .bold))
                         .foregroundStyle(.green)
                         .padding()
+                    //scripture title
                     Text(dailyBread.title)
                         .font(.system(size: 28, weight: .bold))
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 5)
+                    //verse
                     Text(dailyBread.verse)
                         .font(.custom("American Typewriter", size: 18))
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 10)
+                    //body provided by stakeholder
                     Text(dailyBread.body)
                         .font(.subheadline)
                         .italic()

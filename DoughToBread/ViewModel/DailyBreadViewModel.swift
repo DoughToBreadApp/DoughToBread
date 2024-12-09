@@ -7,7 +7,11 @@
 
 import Foundation
 //class for loading in scriptures and setting start day for first scripture
-
+//this file provides the functionality required for decoding the JSON objects into DailyBread objects
+//the code reads in the JSON file "scriptures" and decodes the objects into the scriptures array 
+//where the scripture of the day will be accessed
+//if the scriptures ever need to be changed, the stakeholder can provide a document of all new scriptures to add
+//to replace the current scriptures in the JSON file, or a list of scriptures to add to the current JSON file
 class DailyBreadViewModel: ObservableObject {
     @Published var dailyBread: DailyBread
     //var startDate holds first day daily bread starts
