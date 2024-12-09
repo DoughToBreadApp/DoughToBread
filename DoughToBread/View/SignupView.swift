@@ -4,11 +4,20 @@
 //
 //  Created by Kevin Gerges on 10/6/24.
 //
+//  Description:
+//  This SwiftUI view provides the user interface for the sign-up screen in the "DoughToBread" app.
+//  It includes input fields for email, password, and password confirmation, as well as a button 
+//  to trigger the sign-up process through the LoginViewModel.
+//
+//  Key Features:
+//  - TextField for entering an email address with validation for email format.
+//  - SecureField for entering and confirming the password securely.
+//  - Sign-Up button to invoke the sign-up action using the view model.
+//  - Error message display in case of invalid inputs or failed sign-up attempts.
+//  - SwiftUI layout with responsive spacing and styling for a clean, user-friendly design.
 
-// Import required frameworks
 import Foundation
 import SwiftUI
-import SwiftUI // Note: Duplicate import can be removed
 
 // Sign-up view structure
 struct SignUpView: View {

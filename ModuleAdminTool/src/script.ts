@@ -1,3 +1,20 @@
+
+/**
+ * This file handles the front-end logic for adding new modules to the "DoughToBread" app's database.
+ * It includes Firebase setup, dynamic form handling, and live module preview functionality.
+ *
+ * Key Features:
+ * - Firebase Initialization: Establishes connection to Firestore using Firebase credentials.
+ * - Dynamic Form Handling: Allows admins to add sections and subsections dynamically to the module form.
+ * - Live Preview: Updates a preview area in real-time as the admin fills out the form.
+ * - Firestore Integration: Submits the completed module form to the Firestore database upon form submission.
+ *
+ * Usage:
+ * - Admins can use this script to input module data, visualize how it will appear in the app,
+ *   and save it to the Firestore database with ease.
+ */
+
+
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
