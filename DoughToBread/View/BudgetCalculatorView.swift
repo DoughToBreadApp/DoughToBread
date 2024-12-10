@@ -5,13 +5,9 @@ import Charts
 
 
 struct BudgetExpense: Identifiable {
-
     let id = UUID()
-
     var category: String
-
     var amount: Double
-
 }
 
 
