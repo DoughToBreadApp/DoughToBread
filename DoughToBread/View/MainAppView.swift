@@ -196,7 +196,7 @@ struct MainAppView: View {
                         Text("Courses")
                     }
                 
-                BudgetCalculatorView()
+                CalculatorView()
                     .tabItem {
                         Image(systemName: "function")
                         Text("Calculator")
